@@ -28,12 +28,23 @@ OneWire fahrenheitWire(TMC_F);
 DallasTemperature sensorsCelcius(&celciusWire);
 DallasTemperature sensorsFahrenheit(&fahrenheitWire);
 
+unsigned long measurnmentDelay = 1000;
+
+float celciusGrad = 0.0;
+float fahrenheitGrad = 0.0;
+
 void setup() {
-  lcd.begin(16,2); // 16 - columns, 2- rows
+  /*---- LCD & LEDs -----*/
+  lcd.begin(16,2); 
   delay(1000);
   pinMode(LED_H, LOW);
   pinMode(LED_W, LOW);
   pinMode(LED_N, LOW);
+  /*--- Serial monitor --- */
+  Serial.begin(9600);
+  /*----- DS18B20  ------*/
+  sensorsCelcius.begin();
+  sensorsFahrenheit.begin();
 }
 
 void loop() {
