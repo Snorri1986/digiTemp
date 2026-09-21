@@ -23,6 +23,11 @@
 LiquidCrystal lcd(LCD_RS_PIN,LCD_E_PIN,LCD_D4_PIN,
                   LCD_D5_PIN,LCD_D6_PIN,LCD_D7_PIN);
 
+OneWire celciusWire(TMC_C);
+OneWire fahrenheitWire(TMC_F);
+DallasTemperature sensorsCelcius(&celciusWire);
+DallasTemperature sensorsFahrenheit(&fahrenheitWire);
+
 void setup() {
   lcd.begin(16,2); // 16 - columns, 2- rows
   delay(1000);
