@@ -20,8 +20,15 @@
 #define TMC_F 10
 #define TMC_C 2
 
+LiquidCrystal lcd(LCD_RS_PIN,LCD_E_PIN,LCD_D4_PIN,
+                  LCD_D5_PIN,LCD_D6_PIN,LCD_D7_PIN);
+
 void setup() {
-  
+  lcd.begin(16,2); // 16 - columns, 2- rows
+  delay(1000);
+  pinMode(LED_H, LOW);
+  pinMode(LED_W, LOW);
+  pinMode(LED_N, LOW);
 }
 
 void loop() {
