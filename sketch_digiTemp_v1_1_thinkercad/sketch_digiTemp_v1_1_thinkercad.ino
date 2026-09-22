@@ -67,6 +67,11 @@ void showTempSerialAnalogThinkerCAD() {
   delay(1000);
 }
 
+void initLCD() {
+  lcd.setCursor(0, 0);
+  lcd.print("Hello,digiTemp");
+}
+
 void setup() {
   /*---- LCD & LEDs -----*/
   lcd.begin(16, 2);
@@ -83,5 +88,6 @@ void setup() {
 
 void loop() {
   //showTempSerial();
-  showTempSerialAnalogThinkerCAD();
+  //showTempSerialAnalogThinkerCAD();
+  initLCD();
 }
