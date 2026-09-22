@@ -20,6 +20,10 @@
 #define TMC_F 10
 #define TMC_C 2
 
+/*---- TMP36-----*/
+/*---- Only for test via ThinkerCAD -----*/
+#define TMP_TEST A0
+
 LiquidCrystal lcd(LCD_RS_PIN, LCD_E_PIN, LCD_D4_PIN,
                   LCD_D5_PIN, LCD_D6_PIN, LCD_D7_PIN);
 
@@ -49,6 +53,20 @@ void showTempSerial() {
   Serial.print(" F");
 }
 
+// only for test 
+// TODO: remove before GO to Production
+void showTempSerialAnalogThinkerCAD() {
+  int value = analogRead(TMP_TEST);
+
+  float voltage = value * 5.0 / 1023.0;
+  float temperature = (voltage - 0.5) * 100.0;
+
+  Serial.print("Temperature: ");
+  Serial.print(temperature);
+  Serial.println(" C");
+  delay(1000);
+}
+
 void setup() {
   /*---- LCD & LEDs -----*/
   lcd.begin(16, 2);
@@ -64,5 +82,6 @@ void setup() {
 }
 
 void loop() {
-  showTempSerial();
+  //showTempSerial();
+  showTempSerialAnalogThinkerCAD();
 }
